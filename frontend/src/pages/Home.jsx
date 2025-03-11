@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import api from '../api';
-import { AxiosError } from 'axios';
+import Note from "../components/Note"
 
 function Home() {
   const [notes, setNotes] = useState([]);
@@ -13,17 +13,17 @@ function Home() {
 
   const getNotes = async () => {
     try {
-      const res = await api.get('api/notes/');
+      const res = await api.get('/api/notes/');
       setNotes(res.data);
-      console.log(notes);
-    } catch (err) {
+      console.log(res.data)
+    } catch (err) { 
       alert(err);
     }
   };
 
   const deleteNote = async (id) => {
     try {
-      const res = await api.delete(`/api/notes/delete/${id}`);
+      const res = await api.delete(`/api/notes/delete/${id}/`);
       if (res.status === 204) {
         alert('Note deleted');
       } else {
@@ -31,6 +31,7 @@ function Home() {
       }
       await getNotes();
     } catch (err) {
+        console.log("here")
       alert(err);
     }
   };
@@ -46,7 +47,6 @@ function Home() {
       } else {
         alert('Failed to make note.');
       }
-
       await getNotes();
     } catch (err) {
       alert(err);
@@ -57,22 +57,25 @@ function Home() {
     <div>
       <div>
         <h2>Notes</h2>
+        {notes.map((note) => <Note note={note} onDelete={deleteNote} key={note.id}/>)}
       </div>
+      <h2>Create a Note</h2>
       <form onSubmit={createNote}>
         <label htmlFor='title'>Title:</label>
         <br />
         <input
           type='text'
           id='title'
+          name='title'
           required
-          onChange={(e) => setTitle(e.target.valueAsDate)}
+          onChange={(e) => setTitle(e.target.value)}
           value={title}
         />
         <label htmlFor='content'>Content:</label>
         <br />
         <textarea
-          name='content'
           id='content'
+          name='content'
           required
           value={content}
           onChange={(e) => setContent(e.target.value)}
