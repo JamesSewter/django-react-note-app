@@ -49,6 +49,12 @@ form textarea {
   box-sizing: border-box;
 }
 
+form textarea {
+  min-height: 50px; 
+  resize: vertical; 
+  overflow-y: hidden; 
+}
+
 form input[type='submit'] {
   background-color: #007bff;
   color: white;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import api from '../api';
 import Note from '../components/Note';
 import Header from '../components/Header';
@@ -9,6 +9,8 @@ function Home() {
   const [notes, setNotes] = useState([]);
   const [content, setContent] = useState('');
   const [title, setTitle] = useState('');
+
+  const textareaRef = useRef(null);
 
   useEffect(() => {
     getNotes();
@@ -56,6 +58,13 @@ function Home() {
     }
   };
 
+  const handleInput = (e) => {
+    setContent(e.target.value);
+    const textarea = textareaRef.current;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  };
+
   return (
     <div>
       <div>
@@ -77,17 +86,18 @@ function Home() {
         <label htmlFor='content'>Content:</label>
         <br />
         <textarea
+          ref={textareaRef}
           id='content'
           name='content'
           required
           value={content}
-          onChange={(e) => setContent(e.target.value)}
+          onChange={handleInput}
         ></textarea>
         <br />
         <input type='submit' value='Submit'></input>
       </form>
       <div>
-        <h2 id="notes-subheader" >Your notes:</h2>
+        <h2 id='notes-subheader'>Your notes:</h2>
         {notes.map((note) => (
           <Note note={note} onDelete={deleteNote} key={note.id} />
         ))}
