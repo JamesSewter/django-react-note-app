@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import api from '../api';
-import Note from "../components/Note"
-import "../styles/home.css"
+import Note from '../components/Note';
+import Header from '../components/Header';
+import '../styles/home.css';
 
 function Home() {
   const [notes, setNotes] = useState([]);
@@ -16,8 +17,8 @@ function Home() {
     try {
       const res = await api.get('/api/notes/');
       setNotes(res.data);
-      console.log(res.data)
-    } catch (err) { 
+      console.log(res.data);
+    } catch (err) {
       alert(err);
     }
   };
@@ -32,7 +33,7 @@ function Home() {
       }
       await getNotes();
     } catch (err) {
-        console.log("here")
+      console.log('here');
       alert(err);
     }
   };
@@ -57,8 +58,12 @@ function Home() {
   return (
     <div>
       <div>
-        <h2>Notes</h2>
-        {notes.map((note) => <Note note={note} onDelete={deleteNote} key={note.id}/>)}
+        <div>
+          <Header />
+        </div>
+        {notes.map((note) => (
+          <Note note={note} onDelete={deleteNote} key={note.id} />
+        ))}
       </div>
       <h2>Create a Note</h2>
       <form onSubmit={createNote}>
