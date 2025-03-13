@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import api from '../api';
 import Note from '../components/Note';
 import Header from '../components/Header';
+import Logout from "../components/Logout"
 import '../styles/home.css';
 
 function Home() {
@@ -58,14 +59,10 @@ function Home() {
   return (
     <div>
       <div>
-        <div>
-          <Header />
-        </div>
-        {notes.map((note) => (
-          <Note note={note} onDelete={deleteNote} key={note.id} />
-        ))}
+        <Header />
+        <Logout/>
       </div>
-      <h2>Create a Note</h2>
+      <h2>Post a Note</h2>
       <form onSubmit={createNote}>
         <label htmlFor='title'>Title:</label>
         <br />
@@ -89,6 +86,12 @@ function Home() {
         <br />
         <input type='submit' value='Submit'></input>
       </form>
+      <div>
+        <h2>Your notes:</h2>
+        {notes.map((note) => (
+          <Note note={note} onDelete={deleteNote} key={note.id} />
+        ))}
+      </div>
     </div>
   );
 }

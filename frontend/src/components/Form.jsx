@@ -30,7 +30,7 @@ function Form({ route, method }) {
         navigate('/login');
       }
     } catch (error) {
-      setregisterFailed(true)
+      setregisterFailed(true);
       setloginFailed(true);
       alert(error);
     } finally {
@@ -68,10 +68,13 @@ function Form({ route, method }) {
           <p>Please check your username and password</p>
         </div>
       ) : null}
-       {method === 'register' && registerFailed ? (
+      {method === 'register' && registerFailed ? (
         <div className='register-failure-container'>
           <h2>Registration Failed:</h2>
-          <p>Oops - looks like someone has chosen the same username as you. Please choose another username.</p>
+          <p>
+            Oops - looks like someone has chosen the same username as you.
+            Please choose another username.
+          </p>
         </div>
       ) : null}
     </div>

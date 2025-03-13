@@ -9,25 +9,25 @@ function ProtectedRoute({ children }) {
   const [isAuthorized, setIsAuthorized] = useState(null);
 
   useEffect(() => {
-    auth().catch(() => setIsAuthorized(false))
-  }, [])
+    auth().catch(() => setIsAuthorized(false));
+  }, []);
 
   const refreshToken = async () => {
-    const refreshToken = localStorage.getItem(REFRESH_TOKEN)
+    const refreshToken = localStorage.getItem(REFRESH_TOKEN);
     try {
-        const res = await api.post("/api/token/refresh/", {refresh: refreshToken})
+      const res = await api.post('/api/token/refresh/', {
+        refresh: refreshToken,
+      });
 
-        if (res.status === 200) {
-            localStorage.setItem(ACCESS_TOKEN, res.data.access)
-            setIsAuthorized(true)
-        }
-        else {
-            setIsAuthorized(false)
-        }
-    }
-    catch (err) {
-        console.log(err)
-        setIsAuthorized(false)
+      if (res.status === 200) {
+        localStorage.setItem(ACCESS_TOKEN, res.data.access);
+        setIsAuthorized(true);
+      } else {
+        setIsAuthorized(false);
+      }
+    } catch (err) {
+      console.log(err);
+      setIsAuthorized(false);
     }
   };
 
@@ -55,4 +55,4 @@ function ProtectedRoute({ children }) {
   return isAuthorized ? children : <Navigate to='/login' />;
 }
 
-export default ProtectedRoute
+export default ProtectedRoute;

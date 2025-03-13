@@ -9,7 +9,7 @@ function Register() {
         <Header />
       </div>
       <div>
-        <Form route='api/user/register/' method='register' />;
+        <Form route='api/user/register/' method='register' />
       </div>
     </div>
   );

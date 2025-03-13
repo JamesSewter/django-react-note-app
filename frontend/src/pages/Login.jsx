@@ -14,6 +14,5 @@ function Login() {
   )
 }
 
-//if login fails want to display a message saying incorrect login info - username and password
 
 export default Login;

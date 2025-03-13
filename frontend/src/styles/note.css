@@ -1,7 +1,7 @@
 .note-container {
     width: 80%;
     padding: 10px;
-    margin: 20px 0;
+    margin: auto;
     border: 3px solid #ccc;
     border-radius: 5px;
   }
@@ -23,7 +23,7 @@
   }
   
   .delete-button {
-    background-color: #f44336; /* Red */
+    background-color: #f44336; 
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
@@ -32,5 +32,5 @@
   }
   
   .delete-button:hover {
-    background-color: #a91919; /* Darker red */
+    background-color: #a91919; 
   }
