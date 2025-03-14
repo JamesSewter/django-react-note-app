@@ -2,6 +2,21 @@ div {
   font-family: Arial, sans-serif;
 }
 
+.theme-toggle-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: inherit;
+}
+
+.theme-toggle-button:hover {
+  opacity: 0.8;
+}
+
 .notes-section {
   margin-bottom: 2rem;
 }
@@ -50,9 +65,9 @@ form textarea {
 }
 
 form textarea {
-  min-height: 50px; 
-  resize: vertical; 
-  overflow-y: hidden; 
+  min-height: 50px;
+  resize: vertical;
+  overflow-y: hidden;
 }
 
 form input[type='submit'] {
@@ -70,9 +85,8 @@ form input[type='submit']:hover {
 }
 
 #notes-subheader {
-  text-align: center; 
+  text-align: center;
 }
-
 
 /* improve lol */
 

@@ -4,6 +4,8 @@ import Note from '../components/Note';
 import Header from '../components/Header';
 import Logout from '../components/Logout';
 import { useTheme } from '../context/ThemeContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import '../styles/home.css';
 
 function Home() {
@@ -71,12 +73,14 @@ function Home() {
   return (
     <div>
       <div className={isDarkMode ? 'dark' : 'light'}>
-        <h1>Welcome to My Notes App</h1>
-        <button onClick={toggleTheme}>Toggle Dark Mode</button>
+        <button onClick={toggleTheme} className="theme-toggle-button">
+          <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
+        </button>
         <div>
           <Header />
           <Logout />
         </div>
+        <h1>Welcome to Your Notes</h1>
         <form onSubmit={createNote}>
           <h2>Post a Note</h2>
           <label htmlFor='title'>Title:</label>
