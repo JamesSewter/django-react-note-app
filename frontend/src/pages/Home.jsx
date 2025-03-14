@@ -71,7 +71,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <>
       <div className={isDarkMode ? 'dark' : 'light'}>
         <button onClick={toggleTheme} className="theme-toggle-button">
           <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
@@ -116,7 +116,7 @@ function Home() {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
