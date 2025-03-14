@@ -80,9 +80,9 @@ function Home() {
           <Header />
           <Logout />
         </div>
-        <h1>Welcome to Your Notes</h1>
+        <h1 id="welcome-header">Welcome to Your Notes</h1>
         <form onSubmit={createNote}>
-          <h2>Post a Note</h2>
+          <h2 id="post-note-header">Post a Note</h2>
           <label htmlFor='title'>Title:</label>
           <br />
           <input
@@ -112,7 +112,7 @@ function Home() {
         <div>
           <h2 id='notes-subheader'>Your notes:</h2>
           {notes.map((note) => (
-            <Note note={note} onDelete={deleteNote} key={note.id} />
+            <Note note={note} onDelete={deleteNote} key={note.id} isDarkMode={isDarkMode} />
           ))}
         </div>
       </div>

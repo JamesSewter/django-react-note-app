@@ -1,14 +1,14 @@
 import React from 'react';
 import "../styles/note.css"
 
-function Note({ note, onDelete }) {
+function Note({ note, onDelete, isDarkMode }) {
   const formattedDate = new Date(note.created_at).toLocaleDateString('en-gb');
 
   return (
-    <div className='note-container'>
-      <p className='note-title' >
+    <div className={`note-container ${isDarkMode ? 'dark-note' : 'light-note'}`}>
+      <h2 className='note-title' >
         {note.title}
-      </p>
+      </h2>
 
       <p className='note-content' >
         {note.content}
