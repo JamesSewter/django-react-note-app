@@ -89,10 +89,12 @@ function Home() {
             type='text'
             id='title'
             name='title'
+            maxLength={70}
             required
             onChange={(e) => setTitle(e.target.value)}
             value={title}
           />
+          <p>{title.length} / 70 characters</p>
           <label htmlFor='content'>Content:</label>
           <br />
           <textarea
@@ -103,6 +105,7 @@ function Home() {
             value={content}
             onChange={handleInput}
           ></textarea>
+          <p>{content.length} characters</p>
           <br />
           <input type='submit' value='Submit'></input>
         </form>
